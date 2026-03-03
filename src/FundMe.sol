@@ -3,9 +3,10 @@ pragma solidity ^0.8.18;
 
 // Note: The AggregatorV3Interface might be at a different location than what was in the video!
 //import {AggregatorV3Interface} from "@chainlink/contracts/src/v1.3.0/shared/interfaces/AggregatorV3Interface.sol";
-import {AggregatorV3Interface} from "lib/chainlink-brownie-contracts/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
+import {
+    AggregatorV3Interface
+} from "lib/chainlink-brownie-contracts/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
 import {PriceConverter} from "./PriceConverter.sol";
-
 
 error NotOwner();
 
@@ -79,22 +80,20 @@ contract FundMe {
         fund();
     }
 
-
-
-    function getAddressToAmountFunded(address fundingAddress) public view returns(uint256){
+    function getAddressToAmountFunded(address fundingAddress) public view returns (uint256) {
         return sAddressToAmountFunded[fundingAddress];
     }
 
-    function getFunder(uint256 index) external view returns(address){
+    function getFunder(uint256 index) external view returns (address) {
         return sFunders[index];
     }
 
     // get entire array if needee
-    function getAllFunders() external view returns(address[] memory){
+    function getAllFunders() external view returns (address[] memory) {
         return sFunders;
     }
 
-    function getOwner()external view returns(address){
+    function getOwner() external view returns (address) {
         return iOwner;
     }
 }

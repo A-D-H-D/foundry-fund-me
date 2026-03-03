@@ -5,13 +5,11 @@ import {Script} from "lib/forge-std/src/Script.sol";
 import {FundMe} from "src/FundMe.sol";
 import {HelperConfig} from "script/HelperConfig.s.sol";
 
-
-contract DeployFundMe is Script{
-    function run () external returns(FundMe){
-
+contract DeployFundMe is Script {
+    function run() external returns (FundMe) {
         // before we deploy, let's get the price feed address
         HelperConfig helperConfig = new HelperConfig();
-        
+
         address ethUsdPriceFeed = helperConfig.activeNetworkConfig();
 
         vm.startBroadcast();
@@ -19,6 +17,5 @@ contract DeployFundMe is Script{
         vm.stopBroadcast();
 
         return fundMe;
-
     }
 }
